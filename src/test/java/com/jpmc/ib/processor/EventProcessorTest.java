@@ -1,5 +1,6 @@
 package com.jpmc.ib.processor;
 
+import com.jpmc.ib.exception.ApplicationException;
 import com.jpmc.ib.model.PositionBook;
 import com.jpmc.ib.repo.PositionBookRepo;
 import org.junit.jupiter.api.Test;
@@ -16,11 +17,9 @@ import java.util.Set;
 import static com.jpmc.ib.utils.TestData.*;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anySet;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class EventProcessorTest {
@@ -41,6 +40,16 @@ public class EventProcessorTest {
         assertEquals(1, positionBooks.size());
         assertTrue(positionBooks.stream()
                 .allMatch(positionBook -> positionBook.getAccount().equals(BUY_EVENT_FOR_ACC1_SEC1.getAccount()) && positionBook.getSecurity().equals(BUY_EVENT_FOR_ACC1_SEC1.getSecurity())));
+    }
+
+    @Test
+    void testWhenExceptionOccurredWhileProcessingEvents() {
+        doThrow(new RuntimeException("Resource Not Available")).when(positionBookRepo).save(anySet());
+        ApplicationException applicationException = assertThrows(
+                ApplicationException.class,
+                () -> eventProcessor.accept(List.of(BUY_EVENT_FOR_ACC1_SEC1, ANOTHER_BUY_EVENT_FOR_ACC1_SEC1))
+        );
+        assertTrue(applicationException.getMessage().contains("Error in processing trade events, please check the payload and/or server logs for more details"));
     }
 
     @Test
