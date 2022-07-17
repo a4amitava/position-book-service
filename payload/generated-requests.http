@@ -1,4 +1,14 @@
 ###
+GET http://localhost:8080/api/positions
+
+<> 2022-07-18T001430.200.json
+###
+GET http://localhost:8080/api/positions/ACC1/SEC1
+
+###
+GET http://localhost:8080/api/positions/ACC2/SEC2
+
+###
 POST http://localhost:8080/api/positions/events
 Content-Type: application/json
 
@@ -7,28 +17,45 @@ Content-Type: application/json
   "Action" : "BUY",
   "account" : "ACC1",
   "security": "SEC1",
-  "quantity": 1001
+  "quantity": 100
 },
   {
     "ID": 2,
-    "Action" : "BUY",
-    "account" : "ACC1",
-    "security": "SEC1",
-    "quantity": 1
-  },
-  {
-    "ID": 3,
     "Action" : "SELL",
     "account" : "ACC1",
     "security": "SEC1",
-    "quantity": 1
+    "quantity": 50
   },
 
   {
-    "ID": 1,
+    "ID": 2,
     "Action" : "CANCEL",
-    "account" : "ACC2",
+    "account" : "ACC1",
     "security": "SEC1",
     "quantity": 2
+  },
+  {
+    "ID": 3,
+    "Action" : "BUY",
+    "account" : "ACC1",
+    "security": "SEC1",
+    "quantity": 50
+  },
+  {
+    "ID": 5,
+    "Action" : "BUY",
+    "account" : "ACC2",
+    "security": "SEC2",
+    "quantity": 10
+  },
+  {
+    "ID": 5,
+    "Action" : "SELL",
+    "account" : "ACC2",
+    "security": "SEC2",
+    "quantity": 10
   }
 ]
+
+
+
