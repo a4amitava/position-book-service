@@ -1,0 +1,8 @@
+---
+applications:
+  - name: credit-card-service
+    path: ./target/position-book-service-1-SNAPSHOT.jar
+    memory: 1024M
+    instances: 1
+    buildpacks:
+     - java_buildpack
