@@ -14,7 +14,7 @@ URI-2: GET http://localhost:8080/api/positions
 this will fetch all the postions aggregated using the trading account and the security identifier.
  
 URI-3: GET http://localhost:8080/api/positions/ACC2/SEC2
-this will retrun postion for the Account=ACC2 and Security=SEC2 
+this will retrun postion for the Account and Security
 
 
 *** Deployment Strategy: a manifest file has been created to deploy the artifact on cloud foundary's contanier based PAsS platofrom. 
