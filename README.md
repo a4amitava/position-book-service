@@ -20,3 +20,6 @@ this will retrun postion for the Account=ACC2 and Security=SEC2
 *** Deployment Strategy: a manifest file has been created to deploy the artifact on cloud foundary's contanier based PAsS platofrom. 
 A cmd file also provided to use the manifest for the deployment. This can be further enchanded to deploy on any cloud/contrainer platform.
 
+
+*** Junit Coverage: Junit 5 has used to test and verify the logic. For Api/controller testing RestTemplate framework has been used endpoint
+![image](https://user-images.githubusercontent.com/27267623/179429534-aca8a5e2-24a8-451d-9199-353149f09066.png)
