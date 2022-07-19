@@ -8,7 +8,7 @@
         <version>2.6.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.jpmc</groupId>
+    <groupId>com.soft</groupId>
     <artifactId>position-book-service</artifactId>
     <version>1-SNAPSHOT</version>
     <name>position-book-event-processing-service</name>
